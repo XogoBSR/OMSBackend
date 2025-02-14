@@ -32,12 +32,13 @@ exports.getProducts = async(queries) => {
 exports.createProduct = async(body) => {
 
     console.log("Create Task ",body)
-    const {productName,taskName,description,reporter,startDate,endDate,taskTags,priority,client,members} = body
+    const {productName,taskName,description,reporter,startDate,endDate,taskTags,priority,client,members,visibility} = body
     let result = await Product.create({
         productName,
         taskName,
         description,
         startDate,
+        visibility,
         endDate,
         taskTags,
         priority,
@@ -118,3 +119,6 @@ exports.getProductsByUser = async (id) => {
     }
 };
 
+exports.updateTask = async (productId, taskId,body) => {
+    
+}

@@ -1,24 +1,5 @@
 const mongoose = require("mongoose");
 
-// const subTaskObj = new mongoose.Schema({
-//     taskTitle: {
-//         type: String,
-//         default: ""
-//     },
-//     assignee: {
-//         type: [mongoose.Schema.Types.ObjectId],
-//         ref: "User"
-//     },
-//     reporter: {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: "User",
-//         default: null
-//     },
-//     status:{
-//         type: String,
-//         default: 'Incomplete'
-//     }
-// });
 
 const taskObj = new mongoose.Schema({
     taskTitle: {
@@ -33,9 +14,44 @@ const taskObj = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-    // subTaskArr: {
-    //     type: [subTaskObj]
-    // }
+    totalHours:{
+        type: Number,
+        default: 0
+    },
+    totalSpent: {
+        type: Number,
+        default: 0
+    },
+    priority: {
+        type: String,
+        default: "Low"
+    },
+    description: {
+        type: String
+    },
+    taskType:{
+        type: String,
+        default: "Normal"
+    },
+    billingStatus: {
+        type: String,
+        default: "Non-Billable"
+    },
+    startDate: {
+        type: Date
+    },
+    endDate: {
+        type: Date
+    },
+    taskStatus:{
+        type:String,
+        default:"In Progress"
+    },
+    taskTags : {
+        type: String,
+        default:"Development"
+    }
+   
 });
 
 const productSchema = new mongoose.Schema({
@@ -89,6 +105,7 @@ const productSchema = new mongoose.Schema({
     visibility: {
         type: Boolean,
         default: false
+
     },
     estimatedHours: {
         type: Number,
@@ -97,6 +114,10 @@ const productSchema = new mongoose.Schema({
     totalHours: {
         type: Number,
         default: 0
+    },
+    status:{
+        type:String,
+        default:"Ongoing"
     }
 });
 

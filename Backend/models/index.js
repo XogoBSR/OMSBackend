@@ -25,17 +25,13 @@ exports.db = db;
 
 exports.connectDatabase = async () => {
     let environment = process.env.MONGODB_URL;
-    console.log("ENVIRONMN",environment)
 
     if (process.env.ENVIRONMENT === 'production') {
         environment = process.env.PROD_MONGODB_URL;
     }
 
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(environment, {
         useNewUrlParser: true,
-        useUnifiedTopology: true,
-        serverSelectionTimeoutMS: 10000, // 10 seconds timeout
-      })
-      .then(() => console.log("✅ MongoDB Connected Successfully"))
-      .catch(err => console.error("❌ MongoDB Connection Error:", err));
+        useUnifiedTopology: true
+    });
 }

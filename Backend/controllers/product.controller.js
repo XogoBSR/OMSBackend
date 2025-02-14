@@ -46,3 +46,11 @@ exports.getProductsByUser = async (req,res) => {
     return res.status(200).json(result)
 }
 
+
+exports.updateTask = async (req,res) => {
+
+    const {productid,taskid} = req.params
+    const {body} = req.body
+    const result = await ProductService.updateTask(productid,taskid,body)
+    return res.status(200).json(result)
+}
