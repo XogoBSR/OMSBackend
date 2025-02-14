@@ -24,7 +24,8 @@ db.client = require("./client.model")
 exports.db = db;
 
 exports.connectDatabase = async () => {
-    let environment = process.env.MONGODB_URL;
+    let environment = process.env.MONGO_URI;
+    console.log("Environment ",environment)
 
     if (process.env.ENVIRONMENT === 'production') {
         environment = process.env.PROD_MONGODB_URL;
@@ -32,6 +33,7 @@ exports.connectDatabase = async () => {
 
     await mongoose.connect(environment, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        serverSelectionTimeoutMS: 5000
     });
 }
